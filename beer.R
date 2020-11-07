@@ -12,10 +12,21 @@ strongest = df %>%
   group_by(brewery_name) %>% 
   summarize(mean_abv=mean(abv), beer_count=n()) %>% 
   arrange(desc(mean_abv))
+strongest$brewery_name = factor(strongest$brewery_name)
 
 strongest %>% head(5) %>%
-  ggplot() + geom_col(aes(x=brewery_name, y=mean_abv))
+  ggplot() + geom_col(aes(x=brewery_name, y=mean_abv), fill='steelblue3') +
+  ggtitle('Top 5 Breweries by ABV', subtitle='(all breweries)') + ylab('Average ABV (%)') + xlab('')
 
+
+strongest %>% filter(beer_count > 2) %>% head(5) %>%
+  ggplot() + geom_col(aes(x=brewery_name, y=mean_abv), fill='blue') +
+  ggtitle('Top 5 Breweries by ABV', subtitle='(breweries with 3 or more beers)') + ylab('Average ABV (%)') + xlab('') 
+
+# Take a look at Schorschbräu's beers
+schorschbrau = df %>%
+  filter(brewery_name=='Schorschbräu') %>% 
+  distinct(beer_name, beer_abv)
 
 #  If you had to pick 3 beers to recommend using only this data, which would you pick?
 beers = df %>% group_by(brewery_name, beer_name) %>%
