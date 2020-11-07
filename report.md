@@ -4,9 +4,18 @@
 
 Methodology:
 1. Remove all rows where the ABV value is missing.
-2. Calculate the mean ABV of every *beer* in the dataset. This is the policy to handle any discrepency in ABV among different reviews for a particular beer. 
+2. Calculate the mean ABV of every *beer* in the dataset. This is the policy to handle any discrepencies in ABV among the reviews for a particular beer. 
 3. Calculate the average ABV for each brewery by grouping the results of step 2 by brewery and taking the mean again.
 4. Rank the breweries in order of decreasing average ABV. 
+
+![top abv](img/brewery-abv-4.png)
+
+![top abv with at least 4 beers](img/brewery-abv-all.png)
+
+![schorschbrau beers](img/schorschbrau-abv.png)
+
+
+<br>
 
 ## If you had to pick 3 beers to recommend using only this data, which would you pick?
 
@@ -18,14 +27,18 @@ Somewhat arbitrarily, I chose 30. This leads to the following methodology:
 3. Arrange the beers in order of decreasing mean score.
 
 
+<br>
+
 ## Which of the factors (aroma, taste, appearance, palette) are most important in determining the overall quality of a beer?
 
-To answer this question, we can simply visualize a correlation matrix of the four factors along with the overall score.
+To answer this question, we can simply visualize a correlation matrix of the four factors along with the overall score:
 
 ![correlation matrix](img/cormatrix.png)
 
 We see that taste has a stronger positive correlation with overall score than any of the other three factors. **Taste is therefore the most important factor in determining the overall quality of a beer, according to the data.** 
 
+
+<br>
 
 ## If I typically enjoy a beer due to its aroma and appearance, which beer style should I try?
 
@@ -36,6 +49,8 @@ Methodology:
 
 Result:
 
+
+<br>
 
 ## Code
 
