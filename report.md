@@ -8,11 +8,18 @@ Methodology:
 3. Calculate the average ABV for each brewery by grouping the results of step 2 by brewery and taking the mean again.
 4. Rank the breweries in order of decreasing average ABV. 
 
-![top abv](img/brewery-abv-4.png)
+The following plot shows the average ABV of the top 10 breweries in the ranking. 
 
-![top abv with at least 4 beers](img/brewery-abv-all.png)
+![top abv](img/brewery-abv-all.png)
+
+Some of these breweries (e.g. Shoes, Alt-Oberurseler, and Rascal Creek) only have a single beer in the dataset. One beer isn't enough information to indicate if a brewery *consistently* creates high-ABV beers. Lets make another plot which only considers breweries with at least 4 different beers in the dataset.
+
+![top abv with at least 4 beers](img/brewery-abv-4.png)
+
+In any case, the German brewery Schorschbräu is the clear winner. Prost! Let's have a look at what they have on tap:
 
 ![schorschbrau beers](img/schorschbrau-abv.png)
+
 
 
 <br>
