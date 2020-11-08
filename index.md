@@ -1,5 +1,7 @@
 # BeerAdvocate Dataset Analysis
 
+by Alex Neal ([alexneal.net](https://www.alexneal.net)) on November 9, 2020
+
 This analysis aims to answer four questions about beer and the breweries that make them. For each question, I briefly describe my methodology and then present the results and visualizations. The R/Tidyverse code is included at the end of this report, and is also available [here](https://github.com/alex-neal/beer/blob/master/beer.R).
 
 ## Which brewery produces the strongest beers by ABV?
@@ -18,6 +20,10 @@ We want to calculate the average ABV of each brewery's set of beers, and then fi
 The following plot shows the average ABV of the top 10 breweries in the ranking. 
 
 ![top abv](img/brewery-abv-all.png)
+
+<p align="center">
+  <img src="img/brewery-abv-all.png">
+</p>
 
 Some of these breweries (e.g. Shoes, Alt-Oberurseler, and Rascal Creek) only have a single beer in the dataset. One beer isn't enough information to indicate that a brewery *consistently* creates high-ABV beers. Lets make another plot which only considers breweries with at least 4 different beers.
 
