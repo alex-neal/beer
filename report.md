@@ -2,12 +2,13 @@
 
 ## Which brewery produces the strongest beers by ABV?
 
-Methodology:
+### Methodology:
 1. Remove all rows where the ABV value is missing.
 2. Calculate the mean ABV of every *beer* in the dataset. This is the policy to handle any discrepencies in ABV among the reviews for a particular beer. 
 3. Calculate the average ABV for each brewery by grouping the results of step 2 by brewery and taking the mean again.
 4. Rank the breweries in order of decreasing average ABV. 
 
+### Results:
 The following plot shows the average ABV of the top 10 breweries in the ranking. 
 
 ![top abv](img/brewery-abv-all.png)
@@ -16,7 +17,7 @@ Some of these breweries (e.g. Shoes, Alt-Oberurseler, and Rascal Creek) only hav
 
 ![top abv with at least 4 beers](img/brewery-abv-4.png)
 
-In any case, the German brewery Schorschbräu is the clear winner. Prost! Let's have a look at what they have on tap:
+In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* Let's have a look at what they have on tap:
 
 ![schorschbrau beers](img/schorschbrau-abv.png)
 
@@ -26,12 +27,15 @@ In any case, the German brewery Schorschbräu is the clear winner. Prost! Let's 
 
 ## If you had to pick 3 beers to recommend using only this data, which would you pick?
 
+### Methodology:
 First, it is necessary to answer this question: How many reviews does a beer need in order for its average review score to be considered reliable? 
 
 Somewhat arbitrarily, I chose 30. This leads to the following methodology:
 1. Calculate the total number of reviews and mean overall score for every beer.
 2. Filter out all beers with less than 30 reviews.
 3. Arrange the beers in order of decreasing mean score.
+
+### Results:
 
 
 <br>
