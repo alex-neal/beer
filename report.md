@@ -37,7 +37,7 @@ Somewhat arbitrarily, I chose 30. This leads to the following methodology:
 
 #### Results:
 
-![schorschbrau beers](img/recommendation.png)
+![schorschbrau beers](img/recommendation2.png)
 
 
 | Brewery                                 | Beer            | Aroma | Taste | Appearance | Palate | Overall |
