@@ -28,17 +28,19 @@ In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* 
 ## If you had to pick 3 beers to recommend using only this data, which would you pick?
 
 #### Methodology:
-First, it is necessary to answer this question: How many reviews does a beer need in order for its average review score to be considered reliable? 
+First, I had to answer this question: How many reviews does a beer need in order for its average review score to be considered reliable? 
 
-Somewhat arbitrarily, I chose 30. This leads to the following methodology:
+I chose 30.  This leads to the following methodology:
 1. Calculate the total number of reviews and mean overall score for every beer.
 2. Filter out all beers with less than 30 reviews.
 3. Arrange the beers in order of decreasing mean score.
 
 #### Results:
 
-![schorschbrau beers](img/recommendation2.png)
+![recommendations](img/recommendation2.png)
 
+
+The confidence intervals of the top three beers are sufficiently tight, so I will choose to recommend each of them. Here they are along with their average ratings:
 
 | Brewery                                 | Beer            | Aroma | Taste | Appearance | Palate | Overall |
 |-----------------------------------------|-----------------|-------|-------|------------|--------|---------|
@@ -63,13 +65,20 @@ We see that taste has a stronger positive correlation with overall score than an
 
 ## If I typically enjoy a beer due to its aroma and appearance, which beer style should I try?
 
-Methodology: 
+#### Methodology: 
 1. Calculate the mean aroma and mean appearance scores for every *style* of beer. 
 2. Generate a composite score by averaging the aroma and appearance means. 
 3. Rank the beer styles in order of decreasing composite score.
 
-Result:
+#### Result:
+You should try an **American Double / Imperial Stout**, which had a composte score of 4.16. It is shown along with the other top two contenders in the following table.
 
+
+| Style                            | Avg. Aroma | Avg. Appearance | Composite |
+|----------------------------------|------------|-----------------|-----------|
+| American Double / Imperial Stout | 4.16       | 4.16            | 4.16      |
+| Russian Imperial Stout           | 4.08       | 4.21            | 4.14      |
+| Quadrupel (Quad)                 | 4.13       | 4.12            | 4.13      |
 
 <br>
 
