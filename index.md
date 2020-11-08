@@ -19,21 +19,25 @@ We want to calculate the average ABV of each brewery's set of beers, and then fi
 
 The following plot shows the average ABV of the top 10 breweries in the ranking. 
 
-![top abv](img/brewery-abv-all.png)
-
 <p align="center">
   <img src="img/brewery-abv-all.png">
 </p>
 
 Some of these breweries (e.g. Shoes, Alt-Oberurseler, and Rascal Creek) only have a single beer in the dataset. One beer isn't enough information to indicate that a brewery *consistently* creates high-ABV beers. Lets make another plot which only considers breweries with at least 4 different beers.
 
-![top abv with at least 4 beers](img/brewery-abv-4.png)
+
+
+<p align="center">
+  <img src="img/brewery-abv-4.png">
+</p>
 
 In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* Let's have a look at the beers they have on tap:
 
-![schorschbrau beers](img/schorschbrau-abv.png)
 
 
+<p align="center">
+  <img src="img/schorschbrau-abv.png">
+</p>
 
 <br>
 
@@ -56,8 +60,9 @@ This can all be accomplished with these steps:
 
 This visualization shows average overall ratings of the top 10 beers, along with the corresponding confidence intervals. 
 
-![recommendations](img/recommendation2.png)
-
+<p align="center">
+  <img src="img/recommendation2.png">
+</p>
 
 **The confidence intervals of the top three seem sufficiently tight, so we will choose to recommend each of them.** Here they are along with their average ratings:
 
@@ -77,7 +82,9 @@ To answer this question, we need to calculate the correlation between the four f
 
 #### *Results*:
 
-![correlation matrix](img/cormatrix.png)
+<p align="center">
+  <img src="img/cormatrix.png">
+</p>
 
 The visualization shows that taste has a stronger positive correlation with overall score than any of the other three factors. **Taste is therefore the most important factor in determining the overall quality of a beer, according to the data.** 
 
