@@ -123,7 +123,8 @@ strongest %>% head(10) %>%
 # Vizualize top 10 for breweries with at least 4 beers
 strongest %>% filter(beer_count > 3) %>% head(10) %>%
   ggplot() + geom_col(aes(x=brewery_name, y=mean_abv), fill='palegreen4') + coord_flip() +
-  ggtitle('Top Breweries by ABV', subtitle='(breweries with at least 4 beers)') + ylab('Average ABV (%)') + xlab('') 
+  ggtitle('Top Breweries by ABV', subtitle='(breweries with at least 4 beers)') + 
+  ylab('Average ABV (%)') + xlab('') 
 
 # Take a look at Schorschbräu's beers
 schorschbrau = df %>%
@@ -164,7 +165,8 @@ ggplot(beers, aes(x=beer_name, y=mean_overall)) +
 
 ```R
 # Calculate correlation matrix
-reviews = select(df, c('review_overall', 'review_aroma', 'review_appearance', 'review_palate', 'review_taste'))
+reviews = select(df, c('review_overall', 'review_aroma', 'review_appearance', 
+                       'review_palate', 'review_taste'))
 M = cor(reviews)
 
 # Visualize correlation matrix
