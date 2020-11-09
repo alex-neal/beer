@@ -1,6 +1,6 @@
 # BeerAdvocate Dataset Analysis
 
-by Alex Neal ([alexneal.net](https://www.alexneal.net)) on November 9, 2020
+*by Alex Neal ([alexneal.net](https://www.alexneal.net)) on November 9, 2020*
 
 This analysis aims to answer four questions about beer and the breweries that make them. For each question, I briefly describe my methodology and then present the results and visualizations. The R/Tidyverse code is included at the end of this report, and is also available [here](https://github.com/alex-neal/beer/blob/master/beer.R).
 
@@ -20,23 +20,19 @@ We want to calculate the average ABV of each brewery's set of beers, and then fi
 The following plot shows the average ABV of the top 10 breweries in the ranking. 
 
 <p align="center">
-  <img src="img/brewery-abv-all.png">
+  <img src="img/abv_all.png">
 </p>
 
 Some of these breweries (e.g. Shoes, Alt-Oberurseler, and Rascal Creek) only have a single beer in the dataset. One beer isn't enough information to indicate that a brewery *consistently* creates high-ABV beers. Lets make another plot which only considers breweries with at least 4 different beers.
 
-
-
 <p align="center">
-  <img src="img/brewery-abv-4.png">
+  <img src="img/abv_least4.png">
 </p>
 
 In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* Let's have a look at the beers they have on tap:
 
-
-
 <p align="center">
-  <img src="img/schorschbrau-abv.png">
+  <img src="img/schorschbrau.png">
 </p>
 
 <br>
@@ -45,9 +41,9 @@ In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* 
 
 #### *Methodology*:
 
-We begin by asking: *How many reviews does a beer need in order for its average review score to be considered reliable?* As a somewhat arbitrary choice, we will choose to recommend only beers that have at least 30 reviews.
+We begin by asking: *How many reviews does a beer need in order for its average review score to be considered reliable?* As a partially arbitrary choice, we will choose to recommend only beers that have at least 30 reviews.
 
-To make things a little more interesting, we apply some (slightly bastardized) statistics here. Imagine that every beer in the dataset was tasted and rated by all of the world's beer lovers. If that were the case, we could calculate an "objectively true" rating for each beer. Since our "sample" of reviews for each beer is at least 30, we can apply the central limit theorem to construct a 95% confidence interval for the unknown "true" rating of each beer. A large confidence interval is an indication that a beer has a lot of variation in its ratings. This may prove useful, because we want to recommend a beer that has a large average rating and *also* has little variation in its ratings. 
+To make things a little more interesting, we apply some statistics here. Imagine that every beer in the dataset was tasted and rated by all of the world's beer lovers. If that were the case, we could calculate an "objectively true" rating for each beer. Since our "sample" of reviews for each beer is at least 30 reviews, we can apply the central limit theorem to construct a 95% confidence interval for the unknown "true" rating of each beer. A large confidence interval is an indication that a beer has a lot of variation in its ratings. This may prove useful, because we want to recommend a beer that has a large average rating and *also* has little variation in its ratings. 
 
 This can all be accomplished with these steps:
 
@@ -61,7 +57,11 @@ This can all be accomplished with these steps:
 This visualization shows average overall ratings of the top 10 beers, along with the corresponding confidence intervals. 
 
 <p align="center">
-  <img src="img/recommendation2.png">
+  <img src="img/ci.png">
+</p>
+
+<p align="center">
+  <img src="img/distributions.png">
 </p>
 
 **The confidence intervals of the top three seem sufficiently tight, so we will choose to recommend each of them.** Here they are along with their average ratings:
@@ -75,7 +75,7 @@ This visualization shows average overall ratings of the top 10 beers, along with
 <br>
 
 
-## Which of the factors (aroma, taste, appearance, palette) are most important in determining the overall quality of a beer?
+## Which of the factors (aroma, taste, appearance, palate) are most important in determining the overall quality of a beer?
 
 #### *Methodology*:
 To answer this question, we need to calculate the correlation between the four factors and the overall rating. A quick way to do that is to create and visualize a correlation matrix.
@@ -83,7 +83,7 @@ To answer this question, we need to calculate the correlation between the four f
 #### *Results*:
 
 <p align="center">
-  <img src="img/cormatrix.png">
+  <img src="img/corrplot.png">
 </p>
 
 The visualization shows that taste has a stronger positive correlation with overall score than any of the other three factors. **Taste is therefore the most important factor in determining the overall quality of a beer, according to the data.** 
@@ -192,7 +192,7 @@ ggplot(beers, aes(x=beer_name, y=mean_overall)) +
   ggtitle('Highest Ranking Beers', subtitle="(at least 30 reviews)")
 ```
 
-### Which of the factors (aroma, taste, appearance, palette) are most important in determining the overall quality of a beer?
+### Which of the factors (aroma, taste, appearance, palate) are most important in determining the overall quality of a beer?
 
 ```R
 # Calculate correlation matrix
