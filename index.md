@@ -2,7 +2,7 @@
 
 *by Alex Neal ([alexneal.net](https://www.alexneal.net)) on November 9, 2020*
 
-This analysis aims to answer four questions about beer and the breweries that make them. For each question, I briefly describe my methodology and then present the results and visualizations. The R/Tidyverse code is included at the end of this report, and is also available [here](https://github.com/alex-neal/beer/blob/master/beer.R).
+This analysis aims to answer a set of four questions related to the [BeerAdvocate dataset](https://data.world/socialmediadata/beeradvocate). For each question, I briefly describe my methodology and then present results and visualizations. The R/Tidyverse code is included at the end of this report, and is also available [here](https://github.com/alex-neal/beer/blob/master/beer.R).
 
 ## Which brewery produces the strongest beers by ABV?
 
@@ -13,23 +13,23 @@ We want to calculate the average ABV of each brewery's set of beers, and then fi
 1. Remove all rows where the ABV value is missing.
 2. Calculate the mean ABV of every *beer* in the dataset. (This is simply a policy to handle any discrepencies in ABV among the reviews for a particular beer) 
 3. Calculate the average ABV of each brewery's beers by grouping the results of step 2 by brewery and taking the mean.
-4. Rank the breweries in order of decreasing average ABV. 
+4. Sort the breweries in order of decreasing average ABV. 
 
 #### *Results*:
 
-The following plot shows the average ABV of the top 10 breweries in the ranking. 
+The following bar plot shows the average ABV of the top 10 breweries in the ranking. 
 
 <p align="center">
   <img src="img/abv_all.png">
 </p>
 
-Some of these breweries (e.g. Shoes, Alt-Oberurseler, and Rascal Creek) only have a single beer in the dataset. One beer isn't enough information to indicate that a brewery *consistently* creates high-ABV beers. Lets make another plot which only considers breweries with at least 4 different beers.
+Some of these breweries (e.g. Shoes, Alt-Oberurseler, and Rascal Creek) only have a single beer in the dataset. One beer isn't enough information to indicate that a brewery *consistently* creates high-ABV beers. Let's make another plot that only considers breweries with at least 4 different beers.
 
 <p align="center">
   <img src="img/abv_least4.png">
 </p>
 
-In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* Let's have a look at the beers they have on tap:
+In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* Let's have a look at the potent beers they have on tap:
 
 <p align="center">
   <img src="img/schorschbrau.png">
@@ -41,16 +41,16 @@ In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* 
 
 #### *Methodology*:
 
-We begin by asking: *How many reviews does a beer need in order for its average review score to be considered reliable?* As a partially arbitrary choice, we will choose to recommend only beers that have at least 30 reviews.
+We begin by asking: *How many reviews does a beer need in order for its average review score to be considered reliable?* As a partially arbitrary choice, we will choose to recommend only beers that have been reviewed 30 or more times.
 
-To make things a little more interesting, we apply some statistics here. Imagine that every beer in the dataset was tasted and rated by all of the world's beer lovers. If that were the case, we could calculate an "objectively true" rating for each beer. Since our "sample" of reviews for each beer is at least 30 reviews, we can apply the central limit theorem to construct a 95% confidence interval for the unknown "true" rating of each beer. A large confidence interval is an indication that a beer has a lot of variation in its ratings. This may prove useful, because we want to recommend a beer that has a large average rating and *also* has little variation in its ratings. 
+Let's apply some statistics to make things a little more interesting. Imagine that every beer in the dataset was tasted and rated by all of the world's beer lovers. If that were the case, we could calculate an "objectively true" rating for each beer. Since our "sample" of reviews for each beer is at least 30 reviews, we can apply the central limit theorem to construct a 95% confidence interval for the unknown "true" rating of each beer. Visualizing the confidence intervals can provide some extra insight when comparing the average ratings of different beers. 
 
 This can all be accomplished with these steps:
 
 1. Filter out all beers with less than 30 reviews.
-2. Calculate the total number of reviews, the mean overall rating, and the standard deviation of the ratings for every beer.
+2. For every beer, calculate the total number of reviews, the mean overall rating, and the standard deviation of the overall rating.
 3. Use the results of step 2 to calculate the 95% confidence interval for the "true" mean rating of each beer. 
-4. Arrange the beers in order of decreasing mean score.
+4. Arrange the beers in order of decreasing mean overall rating.
 
 #### *Results*:
 
@@ -60,11 +60,17 @@ This visualization shows average overall ratings of the top 10 beers, along with
   <img src="img/ci.png">
 </p>
 
+If we ignore the fact that the data are likely biased, it is reasonable to say that for most of the beers shown, the calculated average rating is roughly within a margin of 0.1 from the rating that the beer truly deserves. The Yellow Bus margin is a bit larger, while Citra DIPA margin is smaller.
+
+We might also like to know how these 10 beers compare in terms of the distribution of overall ratings received (Note: The ratings are discrete values in the range [0,5] with increments of 0.5.) 
+
 <p align="center">
   <img src="img/distributions.png">
 </p>
 
-**The confidence intervals of the top three seem sufficiently tight, so we will choose to recommend each of them.** Here they are along with their average ratings:
+Here we can observe that the top three beers in the ranking didn't receive any reviews below 4 stars, and they hardly received any reviews below 4.5 stars. Rare D.O.S., the number one beer, received a 5 star review over 70% of the time. 
+
+**The above visualizations do not provide any evidence against recommending the top three beers in the ranking, so those are the ones that I have chosen.** Here they are along with their average ratings:
 
 | Brewery                                 | Beer            | Aroma | Taste | Appearance | Palate | Overall |
 |-----------------------------------------|-----------------|-------|-------|------------|--------|---------|
@@ -95,7 +101,7 @@ The visualization shows that taste has a stronger positive correlation with over
 
 #### *Methodology*:
 
-This question requires a strategy for combining each beer style's average aroma and apperance rankings into a single composite score. A simple, but effective option is to use the average (or midpoint) of the two metrics. This suggests the following process:
+This question requires a strategy for combining each beer style's average aroma and apperance rankings into a single composite score. A simple, but effective option is to use the average (or equally, the midpoint) of the two metrics. This suggests the following process:
 
 1. Calculate the mean aroma and mean appearance score for every *style* of beer. 
 2. Generate the composite score for each style by averaging the aroma and appearance means. 
