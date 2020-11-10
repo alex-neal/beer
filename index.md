@@ -36,7 +36,7 @@ In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* 
 ## If you had to pick 3 beers to recommend using only this data, which would you pick?
 
 
-We begin by asking: *How many reviews does a beer need in order for its average review score to be considered reliable?* As a partially arbitrary choice, we will choose to recommend only beers that have been reviewed 30 or more times.
+We begin by asking: *How many reviews does a beer need in order for its average review score to be considered reliable?* It's a bit arbitrary, but we will choose to only recommend beers that have been reviewed 30 or more times.
 
 Let's operate under the assumption that bias in this dataset is negligible. In that case, we can apply some statistics to make things a little more interesting. Imagine that every beer in the dataset was tasted and rated by all of the world's beer lovers. We could then calculate an "objectively true" rating for each beer. Since our "sample" of reviews for each beer is at least 30 reviews, we can apply the *central limit theorem* to construct a 95% confidence interval for the "true" mean rating of each beer. Visualizing the confidence intervals can provide some extra insight when comparing the average ratings of different beers. 
 
