@@ -43,7 +43,7 @@ Let's operate under the assumption that bias in this dataset is negligible. In t
 We perform the following steps on the dataset:
 
 1. Filter out all beers with less than 30 reviews.
-2. For every beer, calculate the total number of reviews, the mean overall rating, and the standard deviation of the overall rating.
+2. For every beer, calculate the total number of reviews, the mean overall rating, and the standard deviation of the overall ratings.
 3. Use the results of step 2 to calculate the 95% confidence interval for the "true" mean rating of each beer. 
 4. Arrange the beers in order of decreasing mean overall rating.
 
@@ -53,7 +53,7 @@ The next visualization shows average overall ratings of the top 10 beers, along 
   <img src="img/ci.png">
 </p>
 
-For most of the beers shown, we can say that the calculated average rating is probably within a margin of 0.1 from its unknown "true" rating. The Yellow Bus margin is a bit larger, while the Citra DIPA and Cantillon Blåbær Lambik margins are smaller. 
+For most of the beers shown, we can say that the calculated average rating is probably within a margin of 0.1 from the unknown "true" rating. The Yellow Bus margin is a bit larger, while the Citra DIPA and Cantillon Blåbær Lambik margins are smaller. 
 
 We might also like to know how these 10 beers compare in terms of the distribution of overall ratings received. The ratings themselves are discrete-valued in the range [0,5] with increments of 0.5. 
 
