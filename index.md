@@ -13,7 +13,7 @@ We want to calculate the average ABV of each brewery's set of beers, and then fi
 3. Calculate the average ABV of each brewery's beers by grouping the results of step 2 by brewery and taking the mean.
 4. Sort the breweries in order of decreasing average ABV. 
 
-The following bar plot shows the average ABV of the top 10 breweries in the ranking. 
+The following bar plot shows the average ABV for the top 10 breweries in the ranking. 
 
 <p align="center">
   <img src="img/abv_all.png">
@@ -38,24 +38,24 @@ In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* 
 
 We begin by asking: *How many reviews does a beer need in order for its average review score to be considered reliable?* As a partially arbitrary choice, we will choose to recommend only beers that have been reviewed 30 or more times.
 
-Let's apply some statistics to make things a little more interesting. Imagine that every beer in the dataset was tasted and rated by all of the world's beer lovers. If that were the case, we could calculate an "objectively true" rating for each beer. Since our "sample" of reviews for each beer is at least 30 reviews, we can apply the central limit theorem to construct a 95% confidence interval for the unknown "true" rating of each beer. Visualizing the confidence intervals can provide some extra insight when comparing the average ratings of different beers. 
+Let's apply some statistics to make things a little more interesting. (For the purposes of this analysis, assume that bias in the dataset is negligible.) Imagine that every beer in the dataset was tasted and rated by all of the world's beer lovers. If that were the case, we could calculate an "objectively true" rating for each beer. Since our "sample" of reviews for each beer is at least 30 reviews, we can apply the *central limit theorem* to construct a 95% confidence interval for the "true" mean rating of each beer. Visualizing the confidence intervals can provide some extra insight when comparing the average ratings of different beers. 
 
-This can all be accomplished with these steps:
+We perform the following steps on the dataset:
 
 1. Filter out all beers with less than 30 reviews.
 2. For every beer, calculate the total number of reviews, the mean overall rating, and the standard deviation of the overall rating.
 3. Use the results of step 2 to calculate the 95% confidence interval for the "true" mean rating of each beer. 
 4. Arrange the beers in order of decreasing mean overall rating.
 
-This visualization shows average overall ratings of the top 10 beers, along with the corresponding confidence intervals. 
+The next visualization shows average overall ratings of the top 10 beers, along with the corresponding confidence intervals. 
 
 <p align="center">
   <img src="img/ci.png">
 </p>
 
-If we ignore the fact that the data are likely biased, it is reasonable to say that for most of the beers shown, the calculated average rating is roughly within a margin of 0.1 from the rating that the beer truly deserves. The Yellow Bus margin is a bit larger, while Citra DIPA margin is smaller.
+It is reasonable to say that for most of the beers shown, the calculated average rating is roughly within a margin of 0.1 from the rating that the beer truly deserves. The Yellow Bus margin is a bit larger, while the Citra DIPA margin is smaller. 
 
-We might also like to know how these 10 beers compare in terms of the distribution of overall ratings received (Note: The ratings are discrete values in the range [0,5] with increments of 0.5.) 
+We might also like to know how these 10 beers compare in terms of the distribution of overall ratings received (The ratings themselves are discrete-valued in the range [0,5] with increments of 0.5). 
 
 <p align="center">
   <img src="img/distributions.png">
@@ -89,13 +89,13 @@ The visualization shows that taste has a stronger positive correlation with over
 
 ## If I typically enjoy a beer due to its aroma and appearance, which beer style should I try?
 
-This question requires a strategy for combining each beer style's average aroma and apperance rankings into a single composite score. A simple, but effective option is to use the average (or equally, the midpoint) of the two metrics. This suggests the following process:
+This question requires a strategy for combining each beer style's average aroma and appearance rankings into a single composite score. A simple, effective option is to use the average (or equally, the midpoint) of the two metrics. This suggests the following process:
 
 1. Calculate the mean aroma and mean appearance score for every *style* of beer. 
 2. Generate the composite score for each style by averaging the aroma and appearance means. 
 3. Rank the beer styles in order of decreasing composite score.
 
-You should try an **American Double / Imperial Stout**, which has a composite score of 4.16. It is shown along with the other top two contenders in the following table.
+The analysis suggests that you should try an **American Double / Imperial Stout**, which has a composite score of 4.16. It is shown along with the other top two contenders in the following table.
 
 
 | Style                            | Avg. Aroma | Avg. Appearance | Composite |
