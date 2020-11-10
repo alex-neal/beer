@@ -133,11 +133,12 @@ strongest = df %>%
   summarize(mean_abv=mean(abv), beer_count=n()) %>% 
   arrange(desc(mean_abv))
 
-# Fix character issue in 9th brewery name
-strongest$brewery_name[9] = "Rinkuškiai; Aluas Darykla"
-
 # Make brewery name an ordered factor so ggplot will display bars in rank order
 strongest$brewery_name = factor(strongest$brewery_name, levels=rev(strongest$brewery_name))
+
+# Fix a character issue
+levels(strongest$brewery_name)[levels(strongest$brewery_name)=="Rinku\u009aki&#371; Aluas Darykla"] = 
+  "Rinkuškiai; Aluas Darykla"
 
 # Vizualize top 10 for all breweries
 strongest %>% head(10) %>%
