@@ -2,7 +2,7 @@
 
 *by Alex Neal ([alexneal.net](https://www.alexneal.net)) on November 10, 2020*
 
-This analysis aims to answer a set of four questions related to the [BeerAdvocate dataset](https://data.world/socialmediadata/beeradvocate). For each question, I briefly describe my methodology and then present results and visualizations. The R/Tidyverse code is included at the end of this report, and is also available [here](https://github.com/alex-neal/beer/blob/master/beer.R).
+This analysis aims to answer a set of four questions related to the [BeerAdvocate dataset](https://data.world/socialmediadata/beeradvocate). For each question, I briefly describe my methodology and then present results and visualizations. The R code is included at the end of this report, and is also available [here](https://github.com/alex-neal/beer/blob/master/beer.R).
 
 ## Which brewery produces the strongest beers by ABV?
 
