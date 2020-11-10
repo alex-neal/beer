@@ -55,7 +55,7 @@ The next visualization shows average overall ratings of the top 10 beers, along 
 
 It is reasonable to say that for most of the beers shown, the calculated average rating is roughly within a margin of 0.1 from the rating that the beer truly deserves. The Yellow Bus margin is a bit larger, while the Citra DIPA margin is smaller. 
 
-We might also like to know how these 10 beers compare in terms of the distribution of overall ratings received (The ratings themselves are discrete-valued in the range [0,5] with increments of 0.5). 
+We might also like to know how these 10 beers compare in terms of the distribution of overall ratings received. The ratings themselves are discrete-valued in the range [0,5] with increments of 0.5. 
 
 <p align="center">
   <img src="img/distributions.png">
