@@ -6,16 +6,12 @@ This analysis aims to answer a set of four questions related to the [BeerAdvocat
 
 ## Which brewery produces the strongest beers by ABV?
 
-#### *Methodology*:
-
 We want to calculate the average ABV of each brewery's set of beers, and then find the brewery whose average is the highest. This can be achieved in 4 steps: 
 
 1. Remove all rows where the ABV value is missing.
 2. Calculate the mean ABV of every *beer* in the dataset. (This is simply a policy to handle any discrepencies in ABV among the reviews for a particular beer) 
 3. Calculate the average ABV of each brewery's beers by grouping the results of step 2 by brewery and taking the mean.
 4. Sort the breweries in order of decreasing average ABV. 
-
-#### *Results*:
 
 The following bar plot shows the average ABV of the top 10 breweries in the ranking. 
 
@@ -39,7 +35,6 @@ In any case, the German brewery **Schorschbräu is the clear winner**. *Prost!* 
 
 ## If you had to pick 3 beers to recommend using only this data, which would you pick?
 
-#### *Methodology*:
 
 We begin by asking: *How many reviews does a beer need in order for its average review score to be considered reliable?* As a partially arbitrary choice, we will choose to recommend only beers that have been reviewed 30 or more times.
 
@@ -51,8 +46,6 @@ This can all be accomplished with these steps:
 2. For every beer, calculate the total number of reviews, the mean overall rating, and the standard deviation of the overall rating.
 3. Use the results of step 2 to calculate the 95% confidence interval for the "true" mean rating of each beer. 
 4. Arrange the beers in order of decreasing mean overall rating.
-
-#### *Results*:
 
 This visualization shows average overall ratings of the top 10 beers, along with the corresponding confidence intervals. 
 
@@ -83,10 +76,7 @@ Here we can observe that the top three beers in the ranking didn't receive any r
 
 ## Which of the factors (aroma, taste, appearance, palate) are most important in determining the overall quality of a beer?
 
-#### *Methodology*:
 To answer this question, we need to calculate the correlation between the four factors and the overall rating. A quick way to do that is to create and visualize a correlation matrix.
-
-#### *Results*:
 
 <p align="center">
   <img src="img/corrplot2.png">
@@ -99,15 +89,12 @@ The visualization shows that taste has a stronger positive correlation with over
 
 ## If I typically enjoy a beer due to its aroma and appearance, which beer style should I try?
 
-#### *Methodology*:
-
 This question requires a strategy for combining each beer style's average aroma and apperance rankings into a single composite score. A simple, but effective option is to use the average (or equally, the midpoint) of the two metrics. This suggests the following process:
 
 1. Calculate the mean aroma and mean appearance score for every *style* of beer. 
 2. Generate the composite score for each style by averaging the aroma and appearance means. 
 3. Rank the beer styles in order of decreasing composite score.
 
-#### Results:
 You should try an **American Double / Imperial Stout**, which has a composite score of 4.16. It is shown along with the other top two contenders in the following table.
 
 
